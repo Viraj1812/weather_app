@@ -36,8 +36,8 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: widgetList[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: isDarkMode ? Colors.white : Colors.blue,
-        unselectedItemColor: isDarkMode ? Colors.grey : Colors.grey[600],
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Theme.of(context).colorScheme.secondary,
         backgroundColor: isDarkMode ? Colors.black : Colors.white,
         currentIndex: _selectedIndex,
         items: [

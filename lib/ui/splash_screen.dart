@@ -20,11 +20,8 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // Check the current theme
-    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
-
     return Scaffold(
-      backgroundColor: isDarkMode ? Colors.black : Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -40,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Text(
               'Wallpaper App',
               style: GoogleFonts.montserrat(
-                color: isDarkMode ? Colors.white : Colors.black,
+                color: Theme.of(context).colorScheme.secondary,
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
               ),
@@ -57,7 +54,7 @@ void appNavigate(BuildContext context) {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => HomeScreen(),
+        builder: (context) => const HomeScreen(),
       ),
     );
   });

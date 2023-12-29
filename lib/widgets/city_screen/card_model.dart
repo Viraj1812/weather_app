@@ -9,7 +9,6 @@ class WeatherCard extends StatelessWidget {
     required this.cityName,
     required this.time,
     required this.weatherImage,
-    required this.isDarkMode,
   }) : super(key: key);
 
   final String degree;
@@ -17,12 +16,11 @@ class WeatherCard extends StatelessWidget {
   final String cityName;
   final String time;
   final String weatherImage;
-  final bool isDarkMode;
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: isDarkMode ? Colors.grey[800] : Colors.white,
+      color: Theme.of(context).colorScheme.primary,
       child: Container(
         padding: const EdgeInsets.all(10),
         height: 150,
@@ -42,14 +40,13 @@ class WeatherCard extends StatelessWidget {
                           style: GoogleFonts.montserrat(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
-                              color: isDarkMode ? Colors.white : Colors.black),
+                              color: Theme.of(context).colorScheme.secondary),
                         ),
                         TextSpan(
                           text: weather,
                           style: GoogleFonts.montserrat(
                               fontSize: 18,
-                              color:
-                                  isDarkMode ? Colors.grey[400] : Colors.grey,
+                              color: Theme.of(context).colorScheme.secondary,
                               fontWeight: FontWeight.w500),
                         ),
                       ],
@@ -63,7 +60,7 @@ class WeatherCard extends StatelessWidget {
                     style: GoogleFonts.montserrat(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
-                      color: isDarkMode ? Colors.white : Colors.black,
+                      color: Theme.of(context).colorScheme.secondary,
                     ),
                   ),
                   const SizedBox(
@@ -74,7 +71,7 @@ class WeatherCard extends StatelessWidget {
                     style: GoogleFonts.montserrat(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
-                      color: isDarkMode ? Colors.white70 : Colors.black54,
+                      color: Theme.of(context).colorScheme.secondary,
                     ),
                   ),
                 ],

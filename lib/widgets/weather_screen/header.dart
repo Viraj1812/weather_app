@@ -17,8 +17,6 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
-
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
@@ -34,7 +32,7 @@ class Header extends StatelessWidget {
           style: GoogleFonts.lato(
             fontSize: 100,
             fontWeight: FontWeight.bold,
-            color: isDarkMode ? Colors.white : Colors.black,
+            color: Theme.of(context).colorScheme.secondary,
           ),
         ),
         const SizedBox(
@@ -45,7 +43,7 @@ class Header extends StatelessWidget {
           style: GoogleFonts.montserrat(
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: isDarkMode ? Colors.white : Colors.black,
+            color: Theme.of(context).colorScheme.secondary,
           ),
         ),
         const SizedBox(
@@ -56,7 +54,7 @@ class Header extends StatelessWidget {
           style: GoogleFonts.montserrat(
             fontSize: 15,
             fontWeight: FontWeight.w500,
-            color: isDarkMode ? Colors.grey[400] : Colors.grey,
+            color: Theme.of(context).colorScheme.secondary,
           ),
         ),
       ],

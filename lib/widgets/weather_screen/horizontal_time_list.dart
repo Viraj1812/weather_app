@@ -15,8 +15,6 @@ class _HorizontalListState extends State<HorizontalList> {
 
   @override
   Widget build(BuildContext context) {
-    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
-
     return Container(
       width: MediaQuery.of(context).size.width,
       height: 172,
@@ -24,7 +22,7 @@ class _HorizontalListState extends State<HorizontalList> {
         borderRadius: BorderRadius.all(Radius.circular(16)),
       ),
       child: Card(
-        color: isDarkMode ? Colors.grey[800] : Colors.white,
+        color: Theme.of(context).colorScheme.primary,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: weatherList.length,

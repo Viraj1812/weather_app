@@ -11,15 +11,13 @@ class CusAppbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
-
     return AppBar(
       title: Text(
         cityName,
         style: GoogleFonts.montserrat(
           fontSize: 20,
           fontWeight: FontWeight.bold,
-          color: isDarkMode ? Colors.white : Colors.black,
+          color: Theme.of(context).colorScheme.secondary,
         ),
       ),
       centerTitle: true,

@@ -17,9 +17,6 @@ class RowData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Check the current theme
-    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
-
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -34,7 +31,7 @@ class RowData extends StatelessWidget {
               style: GoogleFonts.montserrat(
                 fontSize: 15,
                 fontWeight: FontWeight.w500,
-                color: isDarkMode ? Colors.white : Colors.black,
+                color: Theme.of(context).colorScheme.secondary,
               ),
             ),
           ),
@@ -59,7 +56,7 @@ class RowData extends StatelessWidget {
                   style: GoogleFonts.montserrat(
                     fontSize: 15,
                     fontWeight: FontWeight.w500,
-                    color: isDarkMode ? Colors.white : Colors.black,
+                    color: Theme.of(context).colorScheme.secondary,
                   ),
                 ),
               ],
@@ -75,7 +72,7 @@ class RowData extends StatelessWidget {
               style: GoogleFonts.montserrat(
                 fontSize: 15,
                 fontWeight: FontWeight.w500,
-                color: isDarkMode ? Colors.white : Colors.black,
+                color: Theme.of(context).colorScheme.secondary,
               ),
             ),
           ),

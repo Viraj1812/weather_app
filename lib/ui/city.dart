@@ -13,9 +13,6 @@ class CityScreen extends StatefulWidget {
 class _CityScreenState extends State<CityScreen> {
   @override
   Widget build(BuildContext context) {
-    // Check the current theme
-    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
-
     return Scaffold(
       body: ListView.builder(
         itemCount: diffCity.length,
@@ -27,7 +24,6 @@ class _CityScreenState extends State<CityScreen> {
             cityName: weatherInfo.cityName,
             time: weatherInfo.time,
             weatherImage: weatherInfo.weatherImage,
-            isDarkMode: isDarkMode,
           );
         },
       ),
@@ -37,7 +33,7 @@ class _CityScreenState extends State<CityScreen> {
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.circular(12.0),
-          color: isDarkMode ? Colors.purple : Colors.blue,
+          color: Colors.blue,
         ),
         child: FloatingActionButton(
           onPressed: () {},

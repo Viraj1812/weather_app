@@ -24,8 +24,6 @@ class HCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
-
     return Column(
       children: [
         Container(
@@ -44,11 +42,7 @@ class HCard extends StatelessWidget {
                   borderRadius: isSelected
                       ? const BorderRadius.all(Radius.circular(16))
                       : const BorderRadius.all(Radius.circular(0)),
-                  color: isSelected
-                      ? isDarkMode
-                          ? Colors.purple[800]
-                          : Colors.blue
-                      : Colors.transparent,
+                  color: isSelected ? Colors.blue : Colors.transparent,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(
@@ -62,13 +56,13 @@ class HCard extends StatelessWidget {
                         time,
                         style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.bold,
-                          color: isDarkMode ? Colors.white : Colors.black,
+                          color: Theme.of(context).colorScheme.secondary,
                         ),
                       ),
                       Text(
                         day,
                         style: GoogleFonts.montserrat(
-                          color: isDarkMode ? Colors.white : Colors.black,
+                          color: Theme.of(context).colorScheme.secondary,
                         ),
                       ),
                       Image.asset(
@@ -81,7 +75,7 @@ class HCard extends StatelessWidget {
                         style: GoogleFonts.montserrat(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: isDarkMode ? Colors.white : Colors.black,
+                          color: Theme.of(context).colorScheme.secondary,
                         ),
                       ),
                     ],
@@ -95,9 +89,8 @@ class HCard extends StatelessWidget {
                 Container(
                   width: 1.0,
                   height: 60.0,
-                  color: isDarkMode
-                      ? Colors.grey[600]
-                      : Colors.grey[300], // Divider color
+                  color:
+                      Theme.of(context).colorScheme.secondary, // Divider color
                 ),
             ],
           ),
