@@ -2,45 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CusAppbar extends StatelessWidget {
-  const CusAppbar(
-      {required this.cityName,
-      required this.leadingIcon,
-      required this.actionIcon,
-      super.key});
+  const CusAppbar({
+    Key? key,
+    required this.cityName,
+  }) : super(key: key);
+
   final String cityName;
-  final String leadingIcon;
-  final String actionIcon;
 
   @override
   Widget build(BuildContext context) {
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return AppBar(
       title: Text(
         cityName,
         style: GoogleFonts.montserrat(
           fontSize: 20,
           fontWeight: FontWeight.bold,
+          color: isDarkMode ? Colors.white : Colors.black,
         ),
       ),
-      leading: IconButton(
-        onPressed: () {},
-        icon: leadingIcon != ''
-            ? Image.asset(
-                leadingIcon,
-                cacheHeight: 24,
-                cacheWidth: 24,
-              )
-            : const Icon(Icons.arrow_back),
-      ),
-      actions: [
-        IconButton(
-          onPressed: () {},
-          icon: Image.asset(
-            actionIcon,
-            cacheHeight: 24,
-            cacheWidth: 24,
-          ),
-        )
-      ],
+      centerTitle: true,
+      leading:
+          IconButton(onPressed: () {}, icon: const Icon(Icons.location_pin)),
+      actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
     );
   }
 }

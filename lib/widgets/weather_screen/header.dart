@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Header extends StatelessWidget {
-  const Header(
-      {required this.degree,
-      required this.weather,
-      required this.date,
-      super.key,
-      required this.weatherImage});
+  const Header({
+    Key? key,
+    required this.degree,
+    required this.weather,
+    required this.date,
+    required this.weatherImage,
+  }) : super(key: key);
 
   final String degree;
   final String weather;
@@ -16,6 +17,8 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
@@ -28,15 +31,22 @@ class Header extends StatelessWidget {
         ),
         Text(
           degree,
-          style: GoogleFonts.lato(fontSize: 100, fontWeight: FontWeight.bold),
+          style: GoogleFonts.lato(
+            fontSize: 100,
+            fontWeight: FontWeight.bold,
+            color: isDarkMode ? Colors.white : Colors.black,
+          ),
         ),
         const SizedBox(
           height: 5,
         ),
         Text(
           weather,
-          style:
-              GoogleFonts.montserrat(fontSize: 20, fontWeight: FontWeight.bold),
+          style: GoogleFonts.montserrat(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: isDarkMode ? Colors.white : Colors.black,
+          ),
         ),
         const SizedBox(
           height: 5,
@@ -44,7 +54,10 @@ class Header extends StatelessWidget {
         Text(
           date,
           style: GoogleFonts.montserrat(
-              fontSize: 15, fontWeight: FontWeight.w500, color: Colors.grey),
+            fontSize: 15,
+            fontWeight: FontWeight.w500,
+            color: isDarkMode ? Colors.grey[400] : Colors.grey,
+          ),
         ),
       ],
     );

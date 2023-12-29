@@ -4,7 +4,7 @@ import 'package:whether_app/ui/weather_screen/detail_weather_screen.dart';
 import 'package:whether_app/widgets/weather_screen/h_list_card.dart';
 
 class HorizontalList extends StatefulWidget {
-  const HorizontalList({super.key});
+  const HorizontalList({Key? key}) : super(key: key);
 
   @override
   State<HorizontalList> createState() => _HorizontalListState();
@@ -12,8 +12,11 @@ class HorizontalList extends StatefulWidget {
 
 class _HorizontalListState extends State<HorizontalList> {
   int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
       width: MediaQuery.of(context).size.width,
       height: 172,
@@ -21,7 +24,7 @@ class _HorizontalListState extends State<HorizontalList> {
         borderRadius: BorderRadius.all(Radius.circular(16)),
       ),
       child: Card(
-        color: Colors.white,
+        color: isDarkMode ? Colors.grey[800] : Colors.white,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: weatherList.length,

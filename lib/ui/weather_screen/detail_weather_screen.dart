@@ -3,10 +3,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:whether_app/widgets/weather_screen/detail_screen_row_data.dart';
 
 class DetailScreen extends StatelessWidget {
-  const DetailScreen({super.key});
+  const DetailScreen({Key? key});
 
   @override
   Widget build(BuildContext context) {
+    // Check the current theme
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -14,6 +17,7 @@ class DetailScreen extends StatelessWidget {
           style: GoogleFonts.montserrat(
             fontSize: 20,
             fontWeight: FontWeight.bold,
+            color: isDarkMode ? Colors.white : Colors.black,
           ),
         ),
         leading: IconButton(
@@ -22,16 +26,7 @@ class DetailScreen extends StatelessWidget {
           },
           icon: const Icon(Icons.arrow_back),
         ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Image.asset(
-              'assets/images/search.png',
-              cacheHeight: 24,
-              cacheWidth: 24,
-            ),
-          )
-        ],
+        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
       ),
       body: Column(
         children: [
@@ -170,6 +165,7 @@ class DetailScreen extends StatelessWidget {
                   style: GoogleFonts.montserrat(
                     fontSize: 20,
                     fontWeight: FontWeight.w500,
+                    color: isDarkMode ? Colors.white : Colors.black,
                   ),
                 ),
                 const SizedBox(

@@ -5,12 +5,13 @@ import 'package:whether_app/widgets/weather_screen/header.dart';
 import 'package:whether_app/widgets/weather_screen/horizontal_time_list.dart';
 
 class WeatherScreen extends StatelessWidget {
-  WeatherScreen({super.key});
+  WeatherScreen({Key? key}) : super(key: key);
   final DateTime now = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
     String formattedDate = DateFormat('EEEE, MMMM d').format(now);
+
     return Column(
       mainAxisSize: MainAxisSize.max,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -28,7 +29,12 @@ class WeatherScreen extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        const Footer(sr: '05:12', ss: '19:52'),
+        const Expanded(
+          child: Footer(
+            sr: '05:12',
+            ss: '19:52',
+          ),
+        ),
       ],
     );
   }

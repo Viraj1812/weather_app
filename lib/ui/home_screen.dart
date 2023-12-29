@@ -5,7 +5,7 @@ import 'package:whether_app/ui/weather_screen/weather_screen.dart';
 import 'package:whether_app/widgets/cus_appbar.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -24,41 +24,51 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // Check the current theme
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(kToolbarHeight),
         child: CusAppbar(
           cityName: 'Moscow',
-          leadingIcon: 'assets/images/location.png',
-          actionIcon: 'assets/images/search.png',
         ),
       ),
       body: widgetList[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.blue,
+        selectedItemColor: isDarkMode ? Colors.white : Colors.blue,
+        unselectedItemColor: isDarkMode ? Colors.grey : Colors.grey[600],
+        backgroundColor: isDarkMode ? Colors.black : Colors.white,
         currentIndex: _selectedIndex,
         items: [
           BottomNavigationBarItem(
-              icon: Image.asset(
-                'assets/icons/weather_logo.png',
-                cacheWidth: 24,
-                cacheHeight: 24,
-              ),
-              label: 'Weather'),
+            icon: Image.asset(
+              isDarkMode
+                  ? 'assets/icons/weather_logo.png'
+                  : 'assets/icons/weather_logo.png',
+              cacheWidth: 24,
+              cacheHeight: 24,
+            ),
+            label: 'Weather',
+          ),
           BottomNavigationBarItem(
-              icon: Image.asset(
-                'assets/images/city.png',
-                cacheWidth: 24,
-                cacheHeight: 24,
-              ),
-              label: 'City'),
+            icon: Image.asset(
+              isDarkMode ? 'assets/images/city.png' : 'assets/images/city.png',
+              cacheWidth: 24,
+              cacheHeight: 24,
+            ),
+            label: 'City',
+          ),
           BottomNavigationBarItem(
-              icon: Image.asset(
-                'assets/images/setting.png',
-                cacheWidth: 24,
-                cacheHeight: 24,
-              ),
-              label: 'Settings'),
+            icon: Image.asset(
+              isDarkMode
+                  ? 'assets/images/setting.png'
+                  : 'assets/images/setting.png',
+              cacheWidth: 24,
+              cacheHeight: 24,
+            ),
+            label: 'Settings',
+          ),
         ],
         onTap: _onItemTapped,
       ),

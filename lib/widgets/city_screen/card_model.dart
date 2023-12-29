@@ -2,23 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class WeatherCard extends StatelessWidget {
-  const WeatherCard(
-      {super.key,
-      required this.degree,
-      required this.weather,
-      required this.cityName,
-      required this.time,
-      required this.weatherImage});
+  const WeatherCard({
+    Key? key,
+    required this.degree,
+    required this.weather,
+    required this.cityName,
+    required this.time,
+    required this.weatherImage,
+    required this.isDarkMode,
+  }) : super(key: key);
 
   final String degree;
   final String weather;
   final String cityName;
   final String time;
   final String weatherImage;
+  final bool isDarkMode;
 
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: isDarkMode ? Colors.grey[800] : Colors.white,
       child: Container(
         padding: const EdgeInsets.all(10),
         height: 150,
@@ -38,13 +42,14 @@ class WeatherCard extends StatelessWidget {
                           style: GoogleFonts.montserrat(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
-                              color: Colors.black),
+                              color: isDarkMode ? Colors.white : Colors.black),
                         ),
                         TextSpan(
                           text: weather,
                           style: GoogleFonts.montserrat(
                               fontSize: 18,
-                              color: Colors.grey,
+                              color:
+                                  isDarkMode ? Colors.grey[400] : Colors.grey,
                               fontWeight: FontWeight.w500),
                         ),
                       ],
@@ -58,6 +63,7 @@ class WeatherCard extends StatelessWidget {
                     style: GoogleFonts.montserrat(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
+                      color: isDarkMode ? Colors.white : Colors.black,
                     ),
                   ),
                   const SizedBox(
@@ -68,16 +74,19 @@ class WeatherCard extends StatelessWidget {
                     style: GoogleFonts.montserrat(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
+                      color: isDarkMode ? Colors.white70 : Colors.black54,
                     ),
                   ),
                 ],
               ),
             ),
-            const Spacer(),
-            Image.asset(
-              weatherImage,
-              cacheHeight: 100,
-              cacheWidth: 100,
+            Container(
+              alignment: AlignmentDirectional.centerEnd,
+              child: Image.asset(
+                weatherImage,
+                cacheHeight: 100,
+                cacheWidth: 100,
+              ),
             ),
           ],
         ),

@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:whether_app/ui/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+  const SplashScreen({Key? key}) : super(key: key);
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -20,8 +20,11 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // Check the current theme
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: isDarkMode ? Colors.black : Colors.white,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -37,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Text(
               'Wallpaper App',
               style: GoogleFonts.montserrat(
-                color: Colors.white,
+                color: isDarkMode ? Colors.white : Colors.black,
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
               ),

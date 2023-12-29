@@ -4,7 +4,7 @@ import 'package:whether_app/model/first_screen_model/h_list_model.dart';
 
 class HCard extends StatelessWidget {
   const HCard({
-    super.key,
+    Key? key,
     required this.time,
     required this.day,
     required this.weatherImage,
@@ -12,7 +12,7 @@ class HCard extends StatelessWidget {
     required this.ls,
     required this.index,
     required this.isSelected,
-  });
+  }) : super(key: key);
 
   final String time;
   final String day;
@@ -24,6 +24,8 @@ class HCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Column(
       children: [
         Container(
@@ -40,12 +42,17 @@ class HCard extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(
                   borderRadius: isSelected
-                      ? const BorderRadius.all(Radius.circular(8))
+                      ? const BorderRadius.all(Radius.circular(16))
                       : const BorderRadius.all(Radius.circular(0)),
-                  color: isSelected ? Colors.blue : Colors.transparent,
+                  color: isSelected
+                      ? isDarkMode
+                          ? Colors.purple[800]
+                          : Colors.blue
+                      : Colors.transparent,
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.only(
+                      top: 16, bottom: 16, left: 20, right: 20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -53,9 +60,17 @@ class HCard extends StatelessWidget {
                     children: [
                       Text(
                         time,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
+                        style: GoogleFonts.montserrat(
+                          fontWeight: FontWeight.bold,
+                          color: isDarkMode ? Colors.white : Colors.black,
+                        ),
                       ),
-                      Text(day),
+                      Text(
+                        day,
+                        style: GoogleFonts.montserrat(
+                          color: isDarkMode ? Colors.white : Colors.black,
+                        ),
+                      ),
                       Image.asset(
                         weatherImage,
                         width: 50,
@@ -64,7 +79,10 @@ class HCard extends StatelessWidget {
                       Text(
                         '$degree°C',
                         style: GoogleFonts.montserrat(
-                            fontSize: 18, fontWeight: FontWeight.bold),
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: isDarkMode ? Colors.white : Colors.black,
+                        ),
                       ),
                     ],
                   ),
@@ -77,7 +95,9 @@ class HCard extends StatelessWidget {
                 Container(
                   width: 1.0,
                   height: 60.0,
-                  color: Colors.grey, // Divider color
+                  color: isDarkMode
+                      ? Colors.grey[600]
+                      : Colors.grey[300], // Divider color
                 ),
             ],
           ),

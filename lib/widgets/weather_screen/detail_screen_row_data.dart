@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RowData extends StatelessWidget {
-  const RowData(
-      {super.key,
-      required this.day,
-      required this.weatherImage,
-      required this.weather,
-      required this.degreerange});
+  const RowData({
+    Key? key,
+    required this.day,
+    required this.weatherImage,
+    required this.weather,
+    required this.degreerange,
+  }) : super(key: key);
 
   final String day;
   final String weatherImage;
@@ -16,6 +17,9 @@ class RowData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Check the current theme
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -30,6 +34,7 @@ class RowData extends StatelessWidget {
               style: GoogleFonts.montserrat(
                 fontSize: 15,
                 fontWeight: FontWeight.w500,
+                color: isDarkMode ? Colors.white : Colors.black,
               ),
             ),
           ),
@@ -54,6 +59,7 @@ class RowData extends StatelessWidget {
                   style: GoogleFonts.montserrat(
                     fontSize: 15,
                     fontWeight: FontWeight.w500,
+                    color: isDarkMode ? Colors.white : Colors.black,
                   ),
                 ),
               ],
@@ -69,6 +75,7 @@ class RowData extends StatelessWidget {
               style: GoogleFonts.montserrat(
                 fontSize: 15,
                 fontWeight: FontWeight.w500,
+                color: isDarkMode ? Colors.white : Colors.black,
               ),
             ),
           ),

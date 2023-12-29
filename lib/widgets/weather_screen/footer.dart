@@ -2,20 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Footer extends StatelessWidget {
-  const Footer({super.key, required this.sr, required this.ss});
+  const Footer({Key? key, required this.sr, required this.ss})
+      : super(key: key);
   final String sr;
   final String ss;
 
   @override
   Widget build(BuildContext context) {
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
       width: MediaQuery.of(context).size.width,
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(16),
           topRight: Radius.circular(16),
         ),
-        color: Color.fromARGB(179, 245, 243, 243),
+        color: isDarkMode
+            ? Colors.grey[800]
+            : const Color.fromARGB(179, 245, 243, 243),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.max,
@@ -35,6 +40,7 @@ class Footer extends StatelessWidget {
                       style: GoogleFonts.montserrat(
                         fontSize: 15,
                         fontWeight: FontWeight.w500,
+                        color: isDarkMode ? Colors.white : Colors.black,
                       ),
                     ),
                     Text(
@@ -42,6 +48,7 @@ class Footer extends StatelessWidget {
                       style: GoogleFonts.montserrat(
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
+                        color: isDarkMode ? Colors.white : Colors.black,
                       ),
                     ),
                   ],
@@ -50,7 +57,9 @@ class Footer extends StatelessWidget {
                   width: 15,
                 ),
                 Image.asset(
-                  'assets/images/sunrise.png',
+                  isDarkMode
+                      ? 'assets/images/sunrise.png'
+                      : 'assets/images/sunrise.png',
                   cacheWidth: 70,
                   cacheHeight: 70,
                 )
@@ -70,6 +79,7 @@ class Footer extends StatelessWidget {
                       style: GoogleFonts.montserrat(
                         fontSize: 15,
                         fontWeight: FontWeight.w500,
+                        color: isDarkMode ? Colors.white : Colors.black,
                       ),
                     ),
                     Text(
@@ -77,6 +87,7 @@ class Footer extends StatelessWidget {
                       style: GoogleFonts.montserrat(
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
+                        color: isDarkMode ? Colors.white : Colors.black,
                       ),
                     ),
                   ],
@@ -85,7 +96,9 @@ class Footer extends StatelessWidget {
                   width: 15,
                 ),
                 Image.asset(
-                  'assets/images/sunset.png',
+                  isDarkMode
+                      ? 'assets/images/sunset.png'
+                      : 'assets/images/sunset.png',
                   cacheWidth: 70,
                   cacheHeight: 70,
                 )
