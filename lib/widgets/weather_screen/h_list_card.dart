@@ -25,6 +25,7 @@ class HCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.max,
       children: [
         Container(
           padding: const EdgeInsets.all(8.0),
@@ -44,7 +45,8 @@ class HCard extends StatelessWidget {
                       : const BorderRadius.all(Radius.circular(0)),
                   color: isSelected ? Colors.blue : Colors.transparent,
                 ),
-                child: Padding(
+                child: Container(
+                  alignment: AlignmentDirectional.center,
                   padding: const EdgeInsets.only(
                       top: 16, bottom: 16, left: 20, right: 20),
                   child: Column(

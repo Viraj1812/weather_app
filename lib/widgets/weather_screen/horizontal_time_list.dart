@@ -17,13 +17,14 @@ class _HorizontalListState extends State<HorizontalList> {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: 172,
+      height: MediaQuery.of(context).size.height / 4.9,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(16)),
       ),
       child: Card(
         color: Theme.of(context).colorScheme.primary,
         child: ListView.builder(
+          shrinkWrap: true,
           scrollDirection: Axis.horizontal,
           itemCount: weatherList.length,
           itemBuilder: (context, index) {
